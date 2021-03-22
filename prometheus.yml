@@ -1,20 +1,27 @@
 global:
-  scrape_interval: 5s
-  scrape_timeout: 5s
-  evaluation_interval: 5s
+  scrape_interval: 15s
+
 alerting:
   alertmanagers:
     - static_configs:
-        - targets: []
+        - targets: [
+            18.216.95.96:8080
+        ]
       scheme: http
       timeout: 5s
+
+
 scrape_configs:
-  - job_name: prometheus
-    scrape_interval: 15s
-    scrape_timeout: 10s
+  - job_name: 'servers'
     metrics_path: /metrics
-    scheme: http
     static_configs:
       - targets:
-          - 18.216.186.125:9090
-          -
+          - 18.216.95.96:8080
+          - 18.188.61.227:8080
+          - 3.142.40.180:8080
+
+
+  - job_name: node
+    metrics_path: /metrics
+    static_configs:
+      - targets: [ '18.216.95.96:9100', '18.188.61.227:9100', '3.142.40.180:9100' ]

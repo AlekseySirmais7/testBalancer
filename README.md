@@ -1,3 +1,5 @@
 # Тестовая система для балансирвоки
 
-Команда для запуска сервиса:  `docker build . -t testbalance && docker run -p 8080:8080 -ti testbalance`# testBalancer
+Команда для запуска прометея и графаны:  `docker-compose up --build -d`
+
+Источник для графаны: `http://prometheus:9090`
